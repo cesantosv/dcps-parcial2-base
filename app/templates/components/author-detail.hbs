@@ -1,0 +1,27 @@
+<div class="author-detail">
+    <h2>{{author.username}}</h2>
+    <img src='{{author.profilePicture}}'>
+    <p>
+        <strong>First Name:</strong> {{author.firstName}}</p>
+    <p>
+        <strong>Last Name:</strong> {{author.lastName}}</p>
+    <p>
+        <strong>Email:</strong> {{author.email}}</p>
+    <p>
+        <strong>Numero de Posts :{{author.posts.length}}</strong>
+        <ul>
+            {{#each author.posts as |posts|}}
+            <li><strong>Title : {{posts.title}}</strong></li>
+            <li><strong>Content </strong>{{posts.content}}</li>
+            <li><strong>Published Date : </strong>{{posts.publishedAt}}</li>
+            
+          <button {{action "delete" author posts}} class="button logout-btn" >Eliminar</button>
+            {{/each}}
+        </ul>
+        {{#if deletePost}}
+        <div class="deletePost">Post Eliminado satisfactoriamente!
+        </div>{{/if}}
+    </p>
+
+</div>
+{{yield}}
